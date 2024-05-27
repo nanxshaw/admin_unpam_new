@@ -65,6 +65,7 @@
   <!-- /.content -->
 </div>
 
+<div id="konten"></div>
 <div class="modal fade" id="modal_add">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -80,7 +81,7 @@
         <label for="">Username</label>
         <input type="text" class="form-control" id="username" name="username" />
         <label for="">Password</label>
-        <input type="password" class="form-control" id="password" name="password" />
+        <input type="text" class="form-control" id="password" name="password" />
         <label for="">Status</label>
         <select class="form-control" id="status" name="status">
           <option value="1">Aktif</option>

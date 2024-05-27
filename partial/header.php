@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['status'] != 'login') {
+  header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +36,8 @@
   <link rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="assets/plugins/summernote/summernote-bs4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

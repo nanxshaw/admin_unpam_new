@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include "../koneksi.php";
 
 $no = 1;
@@ -15,6 +17,9 @@ while ($result = mysqli_fetch_array($query)) {
             } else {
                 echo 'Tidak Aktif';
             } ?></td>
-        <td><button class="btn btn-sm btn-warning">Edit</button><button class="btn btn-sm btn-danger">Delete</button></td>
+        <td>
+            <button class="btn btn-sm btn-warning" onclick="edit_data('<?php echo $result['users_id']; ?>')" value="<?php echo $result['users_id']; ?>">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="delete_data('<?php echo $result['users_id']; ?>')">Delete</button>
+        </td>
     </tr>
 <?php } ?>
