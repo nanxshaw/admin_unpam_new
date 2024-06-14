@@ -1,4 +1,8 @@
-<?php include "partial/header.php"; ?>
+<?php
+
+include "partial/header.php";
+include "./koneksi.php";
+?>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -39,22 +43,16 @@
                 <thead>
                   <tr>
                     <th></th>
+                    <th>No</th>
                     <th>ID Barang</th>
                     <th>Nama Barang</th>
+                    <th>Jenis</th>
                     <th>Satuan</th>
                     <th>Stok Awal</th>
-                    <th>Action</th>
+                    <th>Harga</th>
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><input type="checkbox" id="select_id"></td>
-                        <td>Tes</td>
-                        <td>Tes</td>
-                        <td>Tes</td>
-                        <td>Tes</td>
-                        <td>Tes</td>
-                    </tr>
                 </tbody>
               </table>
             </div>
@@ -71,66 +69,9 @@
   <!-- /.content -->
 </div>
 
+
+
 <div id="konten"></div>
-<div class="modal fade" id="modal_add">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Form Input Data Barang</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <label for="">Nama Barang</label>
-        <input type="text" class="form-control" id="nama_brg" name="nama_brg" />
-        <label for="">Jenis Barang</label>
-        <select class="form-control" id="jenis" name="jenis">
-          <option>ATK</option>
-          <option>Minuman</option>
-          <option>Makanan</option>
-        </select>
-        <label for="">Satuan</label>
-        <select class="form-control" id="satuan" name="satuan">
-          <option>PCS</option>
-          <option>Kg</option>
-          <option>Box</option>
-          <option>Lt</option>
-          <option>Ons</option>
-          <option>Pack</option>
-        </select>
-        <label for="">Stok Awal</label>
-        <input type="number" class="form-control" id="stok" name="stok" />
-        <label for="">Harga</label>
-        <input type="number" class="form-control" id="harga" name="harga" />
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" name="btn_simpan" id="btn_simpan" class="btn btn-primary">Simpan</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
 
 <?php include 'partial/footer.php'; ?>
-<script src="formBarang/user.js"></script>
-<script>
-    $(function(){
-        $('#tabel').DataTable();
-
-        $('#btn_add').click(function(){
-            $('#modal_add').modal('show');
-            reset();
-        });
-
-        function reset() {
-            $('#nama_brg').val('');
-            $('#satuan').val('');
-            $('#jenis').val('');
-            $('#stok').val('');
-            $('#harga').val('');
-        }
-    });
-</script>
+<script src="barang/brg.js"></script>
