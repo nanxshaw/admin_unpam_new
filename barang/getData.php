@@ -5,7 +5,7 @@ $query = mysqli_query($koneksi,"SELECT * FROM tb_barang a INNER JOIN tb_satuan b
 while ($result = mysqli_fetch_array($query)){
 ?>
 <tr>
-<td><input type="checkbox" id="select_id" value="<?php echo $result['id_brg']; ?>"></td>
+<td><input type="checkbox" id="select_id" class="cek" value="<?php echo $result['id_brg']; ?>"></td>
     <td><?php echo $no++; ?></td>
     <td><?php echo $result['id_brg']; ?></td>
     <td><?php echo $result['nama_brg']; ?></td>

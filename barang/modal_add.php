@@ -55,3 +55,4 @@ $idBarang = $huruf . sprintf("%04s", $urutan);
   </div>
   <!-- /.modal-dialog -->
 </div>
+<script src="barang/brg.js"></script>

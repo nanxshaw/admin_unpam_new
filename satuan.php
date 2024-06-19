@@ -1,8 +1,4 @@
-<?php
-
-include "partial/header.php";
-include "./koneksi.php";
-?>
+<?php include "partial/header.php"; ?>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -10,12 +6,12 @@ include "./koneksi.php";
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Data Barang</h1>
+          <h1>Data Satuan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Data Barang</li>
+            <li class="breadcrumb-item active">Data Satuan</li>
           </ol>
         </div>
       </div>
@@ -30,29 +26,27 @@ include "./koneksi.php";
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Master Barang</h3>
+              <h3 class="card-title">Data Satuan</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <div class="form-group">
-                <button class="btn btn-sm btn-info btn-sm" id="btn_add">Add Data</button>
-                <button class="btn btn-sm btn-warning" id="btn_edit">Edit Data</button>
-                <button class="btn btn-sm btn-danger" id="btn_delete">Delete Data</button>
+                <button type="button" class="btn btn-sm btn-info" id="btn_add">Add Data</button>
+                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-default">Edit Data</button>
+                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default">Delete Data</button>
               </div>
               <table id="tabel" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th></th>
                     <th>No</th>
-                    <th>ID Barang</th>
-                    <th>Nama Barang</th>
-                    <th>Jenis</th>
+                    <th>ID Satuan</th>
                     <th>Satuan</th>
-                    <th>Stok Awal</th>
-                    <th>Harga</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
+
+
                 </tbody>
               </table>
             </div>
@@ -69,9 +63,7 @@ include "./koneksi.php";
   <!-- /.content -->
 </div>
 
-
-
 <div id="konten"></div>
 
 <?php include 'partial/footer.php'; ?>
-<script src="barang/brg.js"></script>
+<script src="formSatuan/satuan.js"></script>
