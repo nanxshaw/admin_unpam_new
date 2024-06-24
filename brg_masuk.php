@@ -42,7 +42,6 @@ include "./koneksi.php";
               <table id="tabel" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th></th>
                     <th>No</th>
                     <th>ID Masuk</th>
                     <th>Tanggal Masuk</th>

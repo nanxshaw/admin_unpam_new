@@ -22,14 +22,3 @@ while ($result = mysqli_fetch_array($query)){
 }
 ?>
 
-
-<?php
-// $query = "SELECT MAX(id_brg) AS kode FROM tb_barang";
-// $sql = mysqli_query($koneksi, $query);
-// $data = mysqli_fetch_array($sql);
-// $kode_brg = $data['kode'];
-// $urutan = (int) substr($kode_brg, 1, 4);
-// $urutan++;
-// $huruf = "B";
-// $idBarang = $huruf . sprintf("%04s", $urutan);
-?>

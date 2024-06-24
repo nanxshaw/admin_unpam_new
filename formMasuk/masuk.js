@@ -146,7 +146,6 @@ $(function () {
 
     $("#btn_ubah").on("click", function (e) {
     // $(document).on('click', '#btn_ubah', function (e) {
-        console.log('edit')
         var id_masuk_e = $("#id_masuk_e").val();
         var tgl_masuk_e = $("#tgl_masuk_e").val();
         var jml_e = $("#jml_e").val();
@@ -166,14 +165,12 @@ $(function () {
                 "&tgl_masuk=" + tgl_masuk_e +
                 "&barang_id=" + barang_id_e +
                 "&jml=" + jml_e;
-                console.log(str_data)
             $.ajax({
                 type: "POST",
                 url: "formMasuk/edit.php",
                 dataType: "text",
                 data: str_data,
                 success: function (data) {
-                    console.log(data)
                     if (data == "1") {
                         loadData();
                         $("#modal_edit").modal("hide");

@@ -4,6 +4,8 @@ $(function () {
     loadData();
 
     $("#btn_add").click(function (e) {
+        console.log('masuk')
+        e.preventDefault();
         // $('#modal_add').modal('show');
         $.ajax({
             url: "barang/modal_add.php",
@@ -21,6 +23,7 @@ $(function () {
     })
 
     $('#btn_edit').on('click', function (e) {
+        e.preventDefault();
         var cek = $(".cek:checked");
         if (cek.length == 1) {
             var id = [];
