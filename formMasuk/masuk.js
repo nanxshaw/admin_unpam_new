@@ -210,12 +210,33 @@ function filterData() {
                     ["10", "20", "25", "50", "100", "15", "5", "show all"],
                 ],
                 paging: true,
-                searching: true,
-                ordering: true,
-                // dom: 'Bfrtip',
-                // buttons:[
-                //     'copy','csv','excel','pdf','print'
-                // ]
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Download Excel',
+                        title: 'Data Barang Masuk',
+                        filename: 'Data Barang Masuk',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5],
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'Report PDF',
+                        title: 'Data Barang Masuk',
+                        filename: 'Data Barang Masuk',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5],
+                        },
+                        customize:function (doc){
+                            doc.content[1].table.widths = ['10%','20%','20%','20%','20%','10%']
+                        }
+                    },
+                ]
             });
         },
     });
