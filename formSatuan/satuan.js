@@ -4,18 +4,26 @@ $(function () {
     loadData();
 
     $("#btn_add").click(function () {
+        $(this).prop('disabled', true);
+        reset();
+        $('#konten').empty(); 
         $.ajax({
             url: "formSatuan/modal_add.php",
             type: 'GET',
             success: function (data) {
                 $('#konten').html(data);
                 $('#modal_add').modal('show');
-                reset();
             },
             error: function (e) {
                 console.log(e);
+            },
+            complete: function () {
+                // Re-enable the button after AJAX request completes
+                $("#btn_add").prop('disabled', false);
             }
         });
+        e.stopImmediatePropagation();
+        return false;
     })
 
     function reset() {
@@ -87,10 +95,6 @@ $(function () {
 
     });
 
-
-    $('#modal_add').on('hidden.bs.modal', function () {
-        reset();
-    });
 });
 
 function loadData() {
@@ -129,7 +133,6 @@ function edit_data(a) {
         }
     });
 }
-
 
 function delete_data(a) {
     $.ajax({

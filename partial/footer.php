@@ -62,5 +62,9 @@
 <script src="assets/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="assets/dist/js/pages/dashboard.js"></script>
+
+<script src="assets/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 </body>
 </html>

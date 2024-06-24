@@ -3,11 +3,14 @@ $(function () {
     $("#tabel").DataTable();
     loadData();
 
-    $("#btn_add").click(function (e) {
-        e.preventDefault();
+    $('.select2bs4').select2({
+        theme: 'bootstrap4'
+    })
+
+    $("#btn_add").click(function () {
         // $('#modal_add').modal('show');
         $.ajax({
-            url: "barang/modal_add.php",
+            url: "formMasuk/modal_add.php",
             type: 'GET',
             success: function (data) {
                 $('#konten').html(data);
@@ -23,16 +26,15 @@ $(function () {
     })
 
     $('#btn_edit').on('click', function (e) {
-        e.preventDefault();
         var cek = $(".cek:checked");
         if (cek.length == 1) {
             var id = [];
             $(cek).each(function () {
                 id.push($(this).val());
                 // alert(id);
-                var str_data = "id_brg=" + id;
+                var str_data = "id_masuk=" + id;
                 $.ajax({
-                    url: "barang/modal_edit.php",
+                    url: "formMasuk/modal_edit.php",
                     type: "get",
                     data: str_data,
                     success: function (data) {
@@ -45,8 +47,6 @@ $(function () {
         } else {
             alert("pilih data satu saja!!");
         }
-        e.stopImmediatePropagation();
-        return false;
     });
 
     $("#btn_delete").click(function () {
@@ -55,9 +55,9 @@ $(function () {
             var id = [];
             $(cek).each(function () {
                 id.push($(this).val());
-                var str_data = "id_brg=" + id;
+                var str_data = "id_masuk=" + id;
                 $.ajax({
-                    url: "barang/delete.php",
+                    url: "formMasuk/delete.php",
                     type: "POST",
                     data: str_data,
                     success: function (data) {
@@ -76,44 +76,53 @@ $(function () {
     });
 
     function reset() {
-        $('#nama_brg').val('');
-        $('#satuan').val('');
-        $('#jenis').val('');
+        $('#tgl_masuk').val('');
+        $('#barang_id').val('').change();
+        $('#jml').val('');
         $('#stok').val('');
         $('#harga').val('');
     }
 
+    $("#barang_id").on("change", function (e) {
+        var id = $('#barang_id').val();
+        var str_data = "id="+id;
+        $.ajax({
+            url: "formMasuk/cari.php",
+            type: "GET",
+            data: str_data,
+            dataType: "json",
+            success: function (data) {
+                $('#nama_brg').val(data[0].nama_brg);
+                $('#stok').val(data[0].stok_saat_ini);
+            },
+        });
+    });
+
     $("#btn_simpan").on("click", function (e) {
-    // $(document).on('click', '#btn_simpan', function (e) {
+        // $(document).on('click', '#btn_simpan', function (e) {
         // alert("Data berhasil disimpan");
-        var id_brg = $('#id_brg').val();
-        var nama_brg = $('#nama_brg').val();
-        var satuan = $('#satuan').val();
-        var jenis = $('#jenis').val();
+        var id_masuk = $('#id_masuk').val();
+        var tgl_masuk = $('#tgl_masuk').val();
+        var barang_id = $('#barang_id').val();
+        var jml = $('#jml').val();
         var stok = $('#stok').val();
         var harga = $('#harga').val();
 
-        if (id_brg == '')
-            alert('Barang ID wajib diisi!')
-        else if (nama_brg == '')
-            alert('Nama Barang wajib diisi!')
-        else if (jenis == '')
-            alert('Jenis Barang wajib diisi!')
-        else if (satuan == '')
-            alert('Satuan wajib diisi!')
-        else if (stok == '')
-            alert('>Stok Awal wajib diisi!')
-        else if (harga == '')
-            alert('Satuan wajib diisi!')
+        if (id_masuk == '')
+            alert('ID Masuk wajib diisi!')
+        else if (tgl_masuk == '')
+            alert('Tgl Masuk wajib diisi!')
+        else if (barang_id == '')
+            alert('ID Barang wajib diisi!')
+        else if (jml == '')
+            alert('Jumlah wajib diisi!')
         else {
-            var str_data = "id_brg=" + id_brg +
-                "&nama_brg=" + nama_brg +
-                "&satuan=" + satuan +
-                "&jenis=" + jenis +
-                '&stok=' + stok +
-                '&harga=' + harga;
+            var str_data = "id_masuk=" + id_masuk +
+                "&tgl_masuk=" + tgl_masuk +
+                "&barang_id=" + barang_id +
+                "&jml=" + jml;
             $.ajax({
-                url: "barang/add.php",
+                url: "formMasuk/add.php",
                 type: 'POST',
                 dataType: "text",
                 data: str_data,
@@ -124,7 +133,7 @@ $(function () {
                         $('#modal_add').modal('hide');
                         toastr.success('data berhasil disimpan')
                     } else {
-                        toastr.error(data);
+                        alert(data);
                     }
                 },
                 error: function (xhr, status, error) {
@@ -138,39 +147,33 @@ $(function () {
     $("#btn_ubah").on("click", function (e) {
     // $(document).on('click', '#btn_ubah', function (e) {
         console.log('edit')
-        var id_brg_e = $("#id_brg_e").val();
-        var nama_brg_e = $("#nama_brg_e").val();
-        var jenis_e = $("#jenis_e").val();
-        var satuan_e = $("#satuan_e").val();
-        var stok_e = $("#stok_e").val();
-        var harga_e = $("#harga_e").val();
+        var id_masuk_e = $("#id_masuk_e").val();
+        var tgl_masuk_e = $("#tgl_masuk_e").val();
+        var jml_e = $("#jml_e").val();
+        var barang_id_e = $("#barang_id_e").val();
 
-        if (id_brg_e == "") {
-            alert("id_brg_e wajib diisi abangku!");
-        } else if (nama_brg_e == "") {
-            alert("nama_brg_e wajib diisi abangku!");
-        } else if (jenis_e == "") {
-            alert("jenis_e wajib diisi abangku!");
-        } else if (satuan_e == "") {
-            alert("satuan_e wajib diisi abangku!");
-        } else if (stok_e == "") {
-            alert("stok_e wajib diisi abangku!");
-        } else if (harga_e == "") {
-            alert("harga_e wajib diisi abangku!");
+        if (id_masuk_e == "") {
+            alert("id_masuk_e wajib diisi abangku!");
+        } else if (tgl_masuk_e == "") {
+            alert("tgl_masuk_e wajib diisi abangku!");
+        } else if (jml_e == "") {
+            alert("jml_e wajib diisi abangku!");
+        } else if (barang_id_e == "") {
+            alert("barang_id_e wajib diisi abangku!");
         } else {
             var str_data =
-                "id_brg=" + id_brg_e +
-                "&nama_brg=" + nama_brg_e +
-                "&satuan=" + satuan_e +
-                "&jenis=" + jenis_e +
-                "&stok=" + stok_e +
-                "&harga=" + harga_e;
+                "id_masuk=" + id_masuk_e +
+                "&tgl_masuk=" + tgl_masuk_e +
+                "&barang_id=" + barang_id_e +
+                "&jml=" + jml_e;
+                console.log(str_data)
             $.ajax({
                 type: "POST",
-                url: "barang/edit.php",
+                url: "formMasuk/edit.php",
                 dataType: "text",
                 data: str_data,
                 success: function (data) {
+                    console.log(data)
                     if (data == "1") {
                         loadData();
                         $("#modal_edit").modal("hide");
@@ -187,7 +190,7 @@ $(function () {
 
 function loadData() {
     $.ajax({
-        url: "barang/getData.php",
+        url: "formMasuk/getData.php",
         type: "get",
         success: function (data) {
             $("#tabel").dataTable().fnClearTable();
@@ -209,7 +212,7 @@ function loadData() {
 
 // function loadData() {
 //     $.ajax({
-//         url: "barang/getData.php",
+//         url: "formMasuk/getData.php",
 //         type: 'GET',
 //         success: function (data) {
 //             // $('#tabel').DataTable().fnClearTable();
@@ -237,10 +240,10 @@ function loadData() {
 
 function edit_data(a) {
     $.ajax({
-        url: "barang/modal_edit.php",
+        url: "formMasuk/modal_edit.php",
         type: 'GET',
         data: {
-            brg_id: a
+            id_masuk: a
         },
         success: function (data) {
             $('#konten').html(data);
@@ -252,20 +255,19 @@ function edit_data(a) {
     });
 }
 
-
 function delete_data(a) {
     $.ajax({
-        url: "barang/delete.php",
+        url: "formMasuk/delete.php",
         type: 'POST',
         data: {
-            brg_id: a
+            id_masuk: a
         },
         success: function (data) {
             if (data == '1') {
                 toastr.success('data berhasil dihapus');
                 loadData();
             } else {
-                toastr.success(data);
+                toastr.error(data);
             }
         },
         error: function (e) {
