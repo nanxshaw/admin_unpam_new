@@ -4,7 +4,6 @@ $(function () {
     loadData();
 
     $("#btn_add").click(function (e) {
-        e.preventDefault();
         // $('#modal_add').modal('show');
         $.ajax({
             url: "barang/modal_add.php",
@@ -19,11 +18,9 @@ $(function () {
             }
         });
         e.stopImmediatePropagation();
-        return false;
     })
 
     $('#btn_edit').on('click', function (e) {
-        e.preventDefault();
         var cek = $(".cek:checked");
         if (cek.length == 1) {
             var id = [];
@@ -46,10 +43,9 @@ $(function () {
             alert("pilih data satu saja!!");
         }
         e.stopImmediatePropagation();
-        return false;
     });
 
-    $("#btn_delete").click(function () {
+    $("#btn_delete").click(function (e) {
         var cek = $(".cek:checked");
         if (cek.length > 0) {
             var id = [];
@@ -73,6 +69,7 @@ $(function () {
         } else {
             alert("pilih data satu saja!!");
         }
+        e.stopImmediatePropagation();
     });
 
     function reset() {
@@ -234,42 +231,3 @@ function loadData() {
 //         }
 //     });
 // }
-
-function edit_data(a) {
-    $.ajax({
-        url: "barang/modal_edit.php",
-        type: 'GET',
-        data: {
-            brg_id: a
-        },
-        success: function (data) {
-            $('#konten').html(data);
-            $('#modal_edit').modal('show');
-        },
-        error: function (e) {
-            console.log(e);
-        }
-    });
-}
-
-
-function delete_data(a) {
-    $.ajax({
-        url: "barang/delete.php",
-        type: 'POST',
-        data: {
-            brg_id: a
-        },
-        success: function (data) {
-            if (data == '1') {
-                toastr.success('data berhasil dihapus');
-                loadData();
-            } else {
-                toastr.success(data);
-            }
-        },
-        error: function (e) {
-            console.log(e);
-        }
-    });
-}
