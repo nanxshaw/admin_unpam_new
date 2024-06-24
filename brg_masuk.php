@@ -34,10 +34,19 @@ include "./koneksi.php";
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <div class="form-group">
-                <button class="btn btn-sm btn-info btn-sm" id="btn_add">Add Data</button>
-                <!-- <button class="btn btn-sm btn-warning" id="btn_edit">Edit Data</button>
-                <button class="btn btn-sm btn-danger" id="btn_delete">Delete Data</button> -->
+              <div class="row">
+                <div class="col-6 text-left">
+                  <label>Dari</label>
+                  <input type="date" id="start" style="width: 150px;height: 30px;padding-bottom: 7px;">
+                  <label>Sampai</label>
+                  <input type="date" id="end" style="width: 150px;height: 30px;padding-bottom: 7px;">
+                  <button class="btn btn-primary btn-sm" id="btn_filter">Filter Data</button>
+                </div>
+                <div class="col-6 text-right">
+                  <div class="form-group">
+                    <button class="btn btn-sm btn-info btn-sm" id="btn_add">Add Data</button>
+                  </div>
+                </div>
               </div>
               <table id="tabel" class="table table-bordered table-striped">
                 <thead>

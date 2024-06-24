@@ -10,7 +10,7 @@ $(function () {
     $("#btn_add").click(function () {
         // $('#modal_add').modal('show');
         $.ajax({
-            url: "formMasuk/modal_add.php",
+            url: "formKeluar/modal_add.php",
             type: 'GET',
             success: function (data) {
                 $('#konten').html(data);
@@ -32,9 +32,9 @@ $(function () {
             $(cek).each(function () {
                 id.push($(this).val());
                 // alert(id);
-                var str_data = "id_masuk=" + id;
+                var str_data = "id_keluar=" + id;
                 $.ajax({
-                    url: "formMasuk/modal_edit.php",
+                    url: "formKeluar/modal_edit.php",
                     type: "get",
                     data: str_data,
                     success: function (data) {
@@ -55,9 +55,9 @@ $(function () {
             var id = [];
             $(cek).each(function () {
                 id.push($(this).val());
-                var str_data = "id_masuk=" + id;
+                var str_data = "id_keluar=" + id;
                 $.ajax({
-                    url: "formMasuk/delete.php",
+                    url: "formKeluar/delete.php",
                     type: "POST",
                     data: str_data,
                     success: function (data) {
@@ -76,7 +76,7 @@ $(function () {
     });
 
     function reset() {
-        $('#tgl_masuk').val('');
+        $('#tgl_keluar').val('');
         $('#barang_id').val('').change();
         $('#jml').val('');
         $('#stok').val('');
@@ -87,7 +87,7 @@ $(function () {
         var id = $('#barang_id').val();
         var str_data = "id=" + id;
         $.ajax({
-            url: "formMasuk/cari.php",
+            url: "formKeluar/cari.php",
             type: "GET",
             data: str_data,
             dataType: "json",
@@ -107,28 +107,28 @@ $(function () {
     $("#btn_simpan").on("click", function (e) {
         // $(document).on('click', '#btn_simpan', function (e) {
         // alert("Data berhasil disimpan");
-        var id_masuk = $('#id_masuk').val();
-        var tgl_masuk = $('#tgl_masuk').val();
+        var id_keluar = $('#id_keluar').val();
+        var tgl_keluar = $('#tgl_keluar').val();
         var barang_id = $('#barang_id').val();
         var jml = $('#jml').val();
         var stok = $('#stok').val();
         var harga = $('#harga').val();
 
-        if (id_masuk == '')
-            alert('ID Masuk wajib diisi!')
-        else if (tgl_masuk == '')
-            alert('Tgl Masuk wajib diisi!')
+        if (id_keluar == '')
+            alert('ID Keluar wajib diisi!')
+        else if (tgl_keluar == '')
+            alert('Tgl Keluar wajib diisi!')
         else if (barang_id == '')
             alert('ID Barang wajib diisi!')
         else if (jml == '')
             alert('Jumlah wajib diisi!')
         else {
-            var str_data = "id_masuk=" + id_masuk +
-                "&tgl_masuk=" + tgl_masuk +
+            var str_data = "id_keluar=" + id_keluar +
+                "&tgl_keluar=" + tgl_keluar +
                 "&barang_id=" + barang_id +
                 "&jml=" + jml;
             $.ajax({
-                url: "formMasuk/add.php",
+                url: "formKeluar/add.php",
                 type: 'POST',
                 dataType: "text",
                 data: str_data,
@@ -152,28 +152,28 @@ $(function () {
 
     $("#btn_ubah").on("click", function (e) {
         // $(document).on('click', '#btn_ubah', function (e) {
-        var id_masuk_e = $("#id_masuk_e").val();
-        var tgl_masuk_e = $("#tgl_masuk_e").val();
+        var id_keluar_e = $("#id_keluar_e").val();
+        var tgl_keluar_e = $("#tgl_keluar_e").val();
         var jml_e = $("#jml_e").val();
         var barang_id_e = $("#barang_id_e").val();
 
-        if (id_masuk_e == "") {
-            alert("id_masuk_e wajib diisi abangku!");
-        } else if (tgl_masuk_e == "") {
-            alert("tgl_masuk_e wajib diisi abangku!");
+        if (id_keluar_e == "") {
+            alert("id_keluar_e wajib diisi abangku!");
+        } else if (tgl_keluar_e == "") {
+            alert("tgl_keluar_e wajib diisi abangku!");
         } else if (jml_e == "") {
             alert("jml_e wajib diisi abangku!");
         } else if (barang_id_e == "") {
             alert("barang_id_e wajib diisi abangku!");
         } else {
             var str_data =
-                "id_masuk=" + id_masuk_e +
-                "&tgl_masuk=" + tgl_masuk_e +
+                "id_keluar=" + id_keluar_e +
+                "&tgl_keluar=" + tgl_keluar_e +
                 "&barang_id=" + barang_id_e +
                 "&jml=" + jml_e;
             $.ajax({
                 type: "POST",
-                url: "formMasuk/edit.php",
+                url: "formKeluar/edit.php",
                 dataType: "text",
                 data: str_data,
                 success: function (data) {
@@ -196,7 +196,7 @@ function filterData() {
     var str_data = "start=" + start + "&end=" + end;
     console.log(str_data)
     $.ajax({
-        url: "formMasuk/loadData.php",
+        url: "formKeluar/loadData.php",
         type: "get",
         data: str_data,
         success: function (data) {
@@ -223,7 +223,7 @@ function filterData() {
 
 function loadData() {
     $.ajax({
-        url: "formMasuk/getData.php",
+        url: "formKeluar/getData.php",
         type: "get",
         success: function (data) {
             $("#tabel").dataTable().fnClearTable();
@@ -241,8 +241,8 @@ function loadData() {
                     {
                         extend: 'excelHtml5',
                         text: 'Download Excel',
-                        title: 'Data Barang Masuk',
-                        filename: 'Data Barang Masuk',
+                        title: 'Data Barang Keluar',
+                        filename: 'Data Barang Keluar',
                         exportOptions: {
                             columns: [0, 1, 2, 3, 4, 5],
                             modifier: {
@@ -253,8 +253,8 @@ function loadData() {
                     {
                         extend: 'pdf',
                         text: 'Report PDF',
-                        title: 'Data Barang Masuk',
-                        filename: 'Data Barang Masuk',
+                        title: 'Data Barang Keluar',
+                        filename: 'Data Barang Keluar',
                         exportOptions: {
                             columns: [0, 1, 2, 3, 4, 5],
                         },
@@ -270,10 +270,10 @@ function loadData() {
 
 function edit_data(a) {
     $.ajax({
-        url: "formMasuk/modal_edit.php",
+        url: "formKeluar/modal_edit.php",
         type: 'GET',
         data: {
-            id_masuk: a
+            id_keluar: a
         },
         success: function (data) {
             $('#konten').html(data);
@@ -287,10 +287,10 @@ function edit_data(a) {
 
 function delete_data(a) {
     $.ajax({
-        url: "formMasuk/delete.php",
+        url: "formKeluar/delete.php",
         type: 'POST',
         data: {
-            id_masuk: a
+            id_keluar: a
         },
         success: function (data) {
             if (data == '1') {
