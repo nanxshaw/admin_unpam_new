@@ -212,10 +212,33 @@ function filterData() {
                 paging: true,
                 searching: true,
                 ordering: true,
-                // dom: 'Bfrtip',
-                // buttons:[
-                //     'copy','csv','excel','pdf','print'
-                // ]
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Download Excel',
+                        title: 'Data Barang Keluar',
+                        filename: 'Data Barang Keluar',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5],
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'Report PDF',
+                        title: 'Data Barang Keluar',
+                        filename: 'Data Barang Keluar',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5],
+                        },
+                        customize: function (doc) {
+                            doc.content[1].table.widths = ['10%', '20%', '20%', '20%', '20%', '10%']
+                        }
+                    },
+                ]
             });
         },
     });
@@ -258,8 +281,8 @@ function loadData() {
                         exportOptions: {
                             columns: [0, 1, 2, 3, 4, 5],
                         },
-                        customize:function (doc){
-                            doc.content[1].table.widths = ['10%','20%','20%','20%','20%','10%']
+                        customize: function (doc) {
+                            doc.content[1].table.widths = ['10%', '20%', '20%', '20%', '20%', '10%']
                         }
                     },
                 ]

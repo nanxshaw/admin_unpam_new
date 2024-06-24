@@ -210,6 +210,8 @@ function filterData() {
                     ["10", "20", "25", "50", "100", "15", "5", "show all"],
                 ],
                 paging: true,
+                searching: true,
+                ordering: true,
                 dom: 'Bfrtip',
                 buttons: [
                     {
@@ -256,7 +258,9 @@ function loadData() {
                     [10, 20, 25, 50, 100, 15, 5, -1],
                     ["10", "20", "25", "50", "100", "15", "5", "show all"],
                 ],
+                paging: true,
                 searching: true,
+                ordering: true,
                 dom: 'Bfrtip',
                 buttons: [
                     {
