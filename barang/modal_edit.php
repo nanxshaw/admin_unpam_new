@@ -27,16 +27,19 @@ $harga      = $data['harga'];
         <label>Nama Barang</label>
         <input type="text" class="form-control" id="nama_brg_e" name="nama_brg_e" value="<?php echo $nama_brg ?>">
         <label>Jenis Barang</label>
-        <select name="jenis_e" id="jenis_e" class="form-control">
-          <option <?php if ($nama_brg == 'ATK') {
-                    echo 'selected';
-                  } ?>>ATK</option>
-          <option <?php if ($nama_brg == 'Minuman') {
-                    echo 'selected';
-                  } ?>>Minuman</option>
-          <option <?php if ($nama_brg == 'Makanan') {
-                    echo 'selected';
-                  } ?>>Makanan</option>
+        <select class="form-control" id="jenis_e" name="jenis_e">
+          <?php
+          $query = "SELECT * FROM tb_jenis";
+          $sql = mysqli_query($koneksi, $query);
+          while ($data = mysqli_fetch_array($sql)) {
+            if ($satuan == $data['id_jenis']) {
+              $select   = "selected";
+            } else {
+              $select   = "";
+            }
+            echo "<option $select value='" . $data['id_jenis'] . "'>" . $data['jenis'] . "</option>";
+          }
+          ?>
         </select>
         <label>Satuan</label>
         <select name="satuan_e" id="satuan_e" class="form-control">

@@ -27,9 +27,13 @@ $idBarang = $huruf . sprintf("%04s", $urutan);
         <input type="text" class="form-control" id="nama_brg" name="nama_brg" />
         <label for="">Jenis Barang</label>
         <select class="form-control" id="jenis" name="jenis">
-          <option>ATK</option>
-          <option>Minuman</option>
-          <option>Makanan</option>
+          <?php
+          $query = "SELECT * FROM tb_jenis";
+          $sql = mysqli_query($koneksi, $query);
+          while ($data = mysqli_fetch_array($sql)) {
+            echo "<option value='" . $data['id_jenis'] . "'>" . $data['jenis'] . "</option>";
+          }
+          ?>
         </select>
         <label for="">Satuan</label>
         <select class="form-control" id="satuan" name="satuan">

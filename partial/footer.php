@@ -66,5 +66,7 @@
 <script src="assets/plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+<script src="assets/plugins/chart.js/Chart.min.js"></script>
 </body>
 </html>

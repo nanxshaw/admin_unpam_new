@@ -1,7 +1,7 @@
 <?php
 include '../koneksi.php';
 $no = 1;
-$query = mysqli_query($koneksi,"SELECT * FROM tb_barang a INNER JOIN tb_satuan b ON a.satuan=b.id_satuan") or die(mysqli_error($koneksi));
+$query = mysqli_query($koneksi,"SELECT * FROM tb_barang a INNER JOIN tb_satuan b ON a.satuan=b.id_satuan INNER JOIN tb_jenis c ON a.jenis=c.id_jenis") or die(mysqli_error($koneksi));
 while ($result = mysqli_fetch_array($query)){
 ?>
 <tr>

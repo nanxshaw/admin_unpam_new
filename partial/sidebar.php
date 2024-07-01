@@ -88,6 +88,29 @@
                   <p>Data Satuan</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="jenis.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Jenis</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-file"></i>
+              <p>
+                Report
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="report.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report Barang</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
