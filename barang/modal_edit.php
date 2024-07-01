@@ -32,7 +32,7 @@ $harga      = $data['harga'];
           $query = "SELECT * FROM tb_jenis";
           $sql = mysqli_query($koneksi, $query);
           while ($data = mysqli_fetch_array($sql)) {
-            if ($satuan == $data['id_jenis']) {
+            if ($jenis == $data['id_jenis']) {
               $select   = "selected";
             } else {
               $select   = "";

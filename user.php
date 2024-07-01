@@ -32,8 +32,6 @@
             <div class="card-body">
               <div class="form-group">
                 <button type="button" class="btn btn-sm btn-info" id="btn_add">Add Data</button>
-                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-default">Edit Data</button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default">Delete Data</button>
               </div>
               <table id="tabel" class="table table-bordered table-striped">
                 <thead>
