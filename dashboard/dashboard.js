@@ -13,7 +13,6 @@ function loadData() {
             $('#total_masuk').text(data.total_masuk);
             $('#jumlah_keluar').text(data.total_keluar);
 
-            // Prepare data for chart
             var labels = Object.keys(data.data_masuk);
             var dataBarangMasuk = Object.values(data.data_masuk);
             var dataBarangKeluar = Object.values(data.data_keluar);
@@ -43,22 +42,6 @@ function loadData() {
             var barChartOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
-                title: {
-                    display: true,
-                    text: "Monitoring Stok Barang",
-                    fontSize: 20,
-                    fontColor: '#333',
-                    lineHeight: 1.2,
-                    fontStyle: 'bold'
-                },
-                // subtitle: {
-                //     display: true,
-                //     text: "Sistem Persediaan Barang - Prodi SI UNPAM",
-                //     fontSize: 20,
-                //     fontColor: '#333',
-                //     lineHeight: 1.2,
-                //     fontStyle: 'bold'
-                // },
                 legend: {
                     display: true,
                     position: 'bottom',

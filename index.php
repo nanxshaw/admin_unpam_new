@@ -102,6 +102,10 @@
         </div>
         <div class="card-body">
           <div class="chart">
+            <div style="text-align: center;">
+              <h2 style="font-weight: bold;">Monitoring Stok Barang</h2>
+              <p style="font-size: 16px;font-weight: bold;">Sistem Persediaan Barang - Prodi SI UNPAM</p>
+            </div>
             <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
           </div>
         </div>
