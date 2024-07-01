@@ -98,7 +98,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-file"></i>
+              <i class="nav-icon far fa-copy"></i>
               <p>
                 Report
                 <i class="fas fa-angle-left right"></i>
